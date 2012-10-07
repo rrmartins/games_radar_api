@@ -9,6 +9,12 @@ module GamesRadarApi
          response.screenshots.screenshot
       end
 
+      def game_screenshots(id,options={:region=>'us',:page_num=>1,:page_size=>10})
+        response = get("/game/screenshots/#{id}",options)
+        self.total_rows = response.screenshots.total_rows.to_i
+        response.screenshots.screenshot
+      end
+
     end
   end
 end

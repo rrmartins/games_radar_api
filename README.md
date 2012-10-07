@@ -1,6 +1,6 @@
 # GamesRadarApi
 
-TODO: Write a gem description
+This gem is a fully featured API wrapper for the Games Radar API.
 
 ## Installation
 
@@ -16,6 +16,10 @@ Or install it yourself as:
 
     $ gem install games_radar_api
 
+## Configuration
+
+
+
 ## Usage
 
 TODO: Write usage instructions here
@@ -27,3 +31,9 @@ TODO: Write usage instructions here
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## Credits
+
+This gem is created and maintained by Cube Websites
+
+Thanks to the following:

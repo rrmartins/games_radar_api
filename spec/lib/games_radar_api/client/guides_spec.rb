@@ -21,4 +21,11 @@ describe GamesRadarApi::Client::Guides do
     end
 
   end
+
+  describe 'Game Guides' do
+    it 'should fetch guides for a specified game' do
+      @client.game_guides(8783).size.must_be :>, 0
+    end
+  end
+
 end

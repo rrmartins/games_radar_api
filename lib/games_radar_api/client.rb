@@ -9,6 +9,7 @@ module GamesRadarApi
     include GamesRadarApi::Client::Genres
     include GamesRadarApi::Client::Guides
     include GamesRadarApi::Client::News
+    include GamesRadarApi::Client::Platforms
     include GamesRadarApi::Client::Publishers
     include GamesRadarApi::Client::Screenshots
     include GamesRadarApi::Client::Videos

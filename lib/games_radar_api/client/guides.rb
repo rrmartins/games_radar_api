@@ -7,6 +7,12 @@ module GamesRadarApi
          response.cheats.cheat
       end
 
+      def game_guides(id,options={:region=>'us',:page_num=>1,:page_size=>10})
+        response = get("/game/guidesandfaqs/#{id}",options)
+        self.total_rows = response.cheats.total_rows.to_i
+        response.cheats.cheat
+      end
+
     end
   end
 end

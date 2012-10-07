@@ -13,4 +13,12 @@ describe GamesRadarApi::Client::Videos do
     end
 
   end
+
+  describe 'Game Videos' do
+    it 'should fetch videos for a specified game' do
+      @client.game_videos(8783)
+      @client.total_rows.must_be :>, 0
+    end
+  end
+
 end

@@ -21,4 +21,13 @@ describe GamesRadarApi::Client::Cheats do
     end
 
   end
+
+  describe 'Game Cheats' do
+    it 'should fetch cheats for a specified game' do
+      @client.game_cheats(2008021217411530005)
+      @client.total_rows.must_be :>, 0
+    end
+  end
+
+
 end
