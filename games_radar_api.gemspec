@@ -22,8 +22,6 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency('multi_xml', '>= 0.5.1')
   gem.add_runtime_dependency('hashie',  '>= 0.4.0')
 
-  gem.add_development_dependency('webmock', '~> 1.8.10')
-  gem.add_development_dependency('vcr', '~> 2.2.5')
   gem.add_development_dependency('turn', '~> 0.9.6')
   gem.add_development_dependency('rake', '~> 0.9.2.2')
 
