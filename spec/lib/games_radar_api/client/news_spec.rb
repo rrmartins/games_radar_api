@@ -28,23 +28,6 @@ describe GamesRadarApi::Client::News do
 
   end
 
-  describe 'Previews List' do
-
-    it 'should fetch some previews by default' do
-      @client.previews.size.must_be :>, 0
-    end
-
-  end
-
-  describe 'Reviews List' do
-
-    it 'should fetch some reviews by default' do
-      @client.reviews.size.must_be :>, 0
-    end
-
-
-  end
-
   describe 'Game News' do
     it 'should fetch news for a specified game' do
       @client.game_news(8783)
