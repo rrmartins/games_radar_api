@@ -15,19 +15,6 @@ module GamesRadarApi
         response.articles.article
       end
 
-      def previews(options={:region=>'us',:platform=>'all',:genre=>'all',:game_name=>'',:page_num=>1,:page_size=>10,:sort=>'newest'})
-        response = get('/previews',options)
-        self.total_rows = response.articles.total_rows.to_i
-        response.articles.article
-      end
-
-      def reviews(options={:region=>'us',:platform=>'all',:genre=>'all',:game_name=>'',:page_num=>1,:page_size=>10,:sort=>'newest'})
-        response = get('/reviews',options)
-        self.total_rows = response.articles.total_rows.to_i
-        response.articles.article
-      end
-
-
       def game_news(id,options={:region=>'us',:page_num=>1,:page_size=>10})
         response = get("/game/news/#{id}",options)
         self.total_rows = response.articles.total_rows.to_i
