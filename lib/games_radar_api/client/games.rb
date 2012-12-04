@@ -2,14 +2,24 @@ module GamesRadarApi
   class Client
     module Games
       def games(options={:platform=>'all',:genre=>'all',:page_num=>1,:page_size=>10,:sort=>'newest'})
-         response = get('/games',options)
-         self.total_rows = response.games.total_rows.to_i
-         response.games.game
+        response = get('/games',options)
+        self.total_rows = response.games.total_rows.to_i
+        unless response.game.nil? or response.game.id.nil?
+          if response.game.name.include?("us")
+            response.game.name = response.game.name.us
+          end
+        end
+        response.games.game
       end
 
       def game(id)
         response = get("/game/#{id}")
         self.total_rows = response.total_rows.to_i
+        unless response.game.nil? or response.game.id.nil?
+          if response.game.name.include?("us")
+            response.game.name = response.game.name.us
+          end
+        end
         return response.game unless response.game.nil? or response.game.id.nil?
         return nil
       end

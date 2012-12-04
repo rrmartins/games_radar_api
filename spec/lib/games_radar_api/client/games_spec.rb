@@ -23,7 +23,7 @@ describe GamesRadarApi::Client::Games do
   describe 'Game Detail' do
     it 'should fetch the correct game' do
       response = @client.game('16725')
-      response.name.uk.must_equal 'God of War Saga'
+      response.name.must_equal 'God of War Saga'
     end
 
     it 'should return nil for an invalid game' do
