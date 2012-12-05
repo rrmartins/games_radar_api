@@ -31,6 +31,12 @@ describe GamesRadarApi::Client::Games do
       response.must_be_nil
     end
 
+    describe "with response.release_date equal nil" do
+      it "should return nil of field release_date" do
+        response = @client.game('894')
+        response.release_date.must_be_nil
+      end
+    end
   end
 
   describe 'Game Search' do
