@@ -4,12 +4,12 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'games_radar_api/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "games_radar_api"
+  gem.name          = "rr_games_radar"
   gem.version       = GamesRadarApi::VERSION
-  gem.authors       = ["Cube Websites", "Rodrigo Martins"]
-  gem.email         = ["mail@cubewebsites.com", "rodrigo@rrmartins.com"]
-  gem.description   = "Allows interaction with the Games Radar API"
-  gem.summary       = "This gem is created for developers to easily access all features of the Games Radar API"
+  gem.authors       = ["Rodrigo Martins"]
+  gem.email         = ["rodrigo@rrmartins.com"]
+  gem.description   = "Gem for interaction with the API of GamesRadar."
+  gem.summary       = "This gem is for interaction with the API of GamesRadar."
   gem.homepage      = "https://github.com/rrmartins/games_radar_api"
 
   gem.files         = `git ls-files`.split($/)
