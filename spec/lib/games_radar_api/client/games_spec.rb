@@ -39,8 +39,13 @@ describe GamesRadarApi::Client::Games do
     end
 
     it "should return name of platform" do
-      response = @client.game('894')
-      response.platform.must_equal('PC')
+      response = @client.game('16725')
+      response.platform.must_equal('PS3')
+    end
+
+    it "should return name of genre" do
+      response = @client.game('16725')
+      response.genre.must_equal("Action")
     end
   end
 

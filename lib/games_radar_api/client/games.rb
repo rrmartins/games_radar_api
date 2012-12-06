@@ -16,7 +16,9 @@ module GamesRadarApi
         response = get("/game/#{id}")
         self.total_rows = response.total_rows.to_i
         unless response.game.nil? or response.game.id.nil?
-          if response.game.name.include?("us")
+          if response.game.name.nil?
+            response.game.name = nil
+          elsif response.game.name.include?("us")
             response.game.name = response.game.name.us
           end
 
@@ -24,10 +26,23 @@ module GamesRadarApi
             response.game[:release_date] = nil
           end
 
-          if response.game.platform.include?("name")
+          if response.game.platform.nil?
+            response.game[:platform] = nil
+          elsif response.game.platform.include?("name")
             response.game[:platform] = response.game.platform.name
           end
 
+          if response.game.genre.nil?
+            response.game[:genre] = nil
+          elsif response.game.genre.include?("name")
+            response.game[:genre] = response.game.genre.name
+          end
+
+          if response.game.publishers.nil?
+            response.game[:publishers] = nil
+          elsif response.game.publishers.include?("us")
+            response.game[:publishers] = response.game.publishers.us
+          end
 
         end
 
