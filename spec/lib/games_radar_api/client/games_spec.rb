@@ -37,6 +37,11 @@ describe GamesRadarApi::Client::Games do
         response.release_date.must_be_nil
       end
     end
+
+    it "should return name of platform" do
+      response = @client.game('894')
+      response.platform.must_equal('PC')
+    end
   end
 
   describe 'Game Search' do

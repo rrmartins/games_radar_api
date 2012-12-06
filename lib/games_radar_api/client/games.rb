@@ -23,6 +23,12 @@ module GamesRadarApi
           if response.game.release_date.nil?
             response.game[:release_date] = nil
           end
+
+          if response.game.platform.include?("name")
+            response.game[:platform] = response.game.platform.name
+          end
+
+
         end
 
         return response.game unless response.game.nil? or response.game.id.nil?
