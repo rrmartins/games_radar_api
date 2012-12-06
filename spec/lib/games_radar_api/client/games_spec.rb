@@ -47,6 +47,11 @@ describe GamesRadarApi::Client::Games do
       response = @client.game('16725')
       response.genre.must_equal("Action")
     end
+
+    it "should return name of esrb" do
+      response = @client.game('16725')
+      response.esrb.must_equal("Mature")
+    end
   end
 
   describe 'Game Search' do
@@ -61,8 +66,6 @@ describe GamesRadarApi::Client::Games do
       response = @client.game_search('Darksdiers','xbox360')
       response.must_be_nil
     end
-
-
   end
 
 end

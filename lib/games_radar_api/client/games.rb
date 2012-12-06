@@ -44,6 +44,17 @@ module GamesRadarApi
             response.game[:publishers] = response.game.publishers.us
           end
 
+          if response.game.description.nil? or response.game.description.empty?
+            response.game[:description] = nil
+          else
+            response.game[:description] = response.game.description
+          end
+
+          if response.game.censorship.nil?
+            response.game[:esrb] = nil
+          else
+            response.game[:esrb] = response.game.censorship.esrb.rating
+          end
         end
 
         return response.game unless response.game.nil? or response.game.id.nil?
