@@ -52,6 +52,16 @@ describe GamesRadarApi::Client::Games do
       response = @client.game('16725')
       response.esrb.must_equal("Mature")
     end
+
+    it "should return name of developers" do
+      response = @client.game('16725')
+      response.developers.must_equal("SCE Santa Monica")
+    end
+
+    it "should return name of publishers" do
+      response = @client.game('16725')
+      response.publishers.must_equal("SCEA")
+    end
   end
 
   describe 'Game Search' do

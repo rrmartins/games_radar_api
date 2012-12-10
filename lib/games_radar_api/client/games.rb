@@ -15,50 +15,74 @@ module GamesRadarApi
       def game(id)
         response = get("/game/#{id}")
         self.total_rows = response.total_rows.to_i
-        unless response.game.nil? or response.game.id.nil?
-          if response.game.name.nil?
-            response.game.name = nil
-          elsif response.game.name.include?("us")
-            response.game.name = response.game.name.us
+        game = if response.game.nil? or response.game.id.nil?
+                  nil
+                else
+                  response.game
+                end
+
+        if !game.nil?
+          if game.name.nil?
+            game.name = nil
+          elsif game.name.include?("us")
+            game.name = game.name.us
           end
 
-          if response.game.release_date.nil?
-            response.game[:release_date] = nil
+          if game.release_date.nil?
+            game[:release_date] = nil
           end
 
-          if response.game.platform.nil?
-            response.game[:platform] = nil
-          elsif response.game.platform.include?("name")
-            response.game[:platform] = response.game.platform.name
+          if game.platform.nil?
+            game[:platform] = nil
+          elsif game.platform.include?("name")
+            game[:platform] = game.platform.name
           end
 
-          if response.game.genre.nil?
-            response.game[:genre] = nil
-          elsif response.game.genre.include?("name")
-            response.game[:genre] = response.game.genre.name
+          if game.genre.nil?
+            game[:genre] = nil
+          elsif game.genre.include?("name")
+            game[:genre] = game.genre.name
           end
 
-          if response.game.publishers.nil?
-            response.game[:publishers] = nil
-          elsif response.game.publishers.include?("us")
-            response.game[:publishers] = response.game.publishers.us
+          if game.publishers.nil?
+            game[:publishers] = nil
+          elsif game.publishers.include?("us")
+            game[:publishers] = game.publishers.us
           end
 
-          if response.game.description.nil? or response.game.description.empty?
-            response.game[:description] = nil
+          if game.description.nil? or game.description.empty?
+            game[:description] = nil
           else
-            response.game[:description] = response.game.description
+            game[:description] = game.description
           end
 
-          if response.game.censorship.nil?
-            response.game[:esrb] = nil
+          if game.censorship.nil?
+            game[:esrb] = nil
           else
-            response.game[:esrb] = response.game.censorship.esrb.rating
+            game[:esrb] = game.censorship.esrb.rating
           end
+
+          if game.expected_release_date.nil?
+            game.expected_release_date = nil
+          elsif game.expected_release_date.include?("us")
+            game.expected_release_date = game.expected_release_date.us
+          end
+
+          if game.developers.nil?
+            game.developers = nil
+          elsif game.developers.include?("company")
+            game.developers = game.developers.company.name
+          end
+
+          if game.publishers.nil?
+            game.publishers = nil
+          elsif game.publishers.include?("company")
+            game.publishers = game.publishers.company.name
+          end
+
         end
 
-        return response.game unless response.game.nil? or response.game.id.nil?
-        return nil
+        return game
       end
 
       def game_search(query,platform,options={:region=>'us'})
